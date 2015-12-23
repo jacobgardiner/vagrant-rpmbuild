@@ -6,10 +6,15 @@ Vagrant::Config.run do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.auto_detect = true
+  end
+
   # This box is a minimal install of SL6
   config.vm.box = "sl6-base"
   config.vm.box_url = 'https://jgsyd.s3.amazonaws.com/vagrant/sl6-base.box'
-  config.vm.host_name = "sl-64-x86-64.vagrant"
+  config.vm.host_name = "sl-64-x86-64.local"
+  config.ssh.forward_agent = true
   config.vm.customize ["modifyvm", :id, "--memory", 1024]
 
 
