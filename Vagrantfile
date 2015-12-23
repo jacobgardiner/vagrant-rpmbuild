@@ -58,6 +58,9 @@ Vagrant::Config.run do |config|
   # #               Managed by Puppet.\n"
   # # }
   #
+
+  # Setup using Puppet
+   config.vm.provision :shell, :path => "install-puppet.sh"
    config.vm.provision :puppet do |puppet|
      puppet.manifests_path = "manifests"
      puppet.manifest_file  = "demo.pp"
